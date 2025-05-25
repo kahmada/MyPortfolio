@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaffeeZeit</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .split-container {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .left-side {
+      width: 50%;
+      background-color: white;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .right-side {
+      width: 50%;
+      background-color: #f8f4e9; /* Light beige color */
+      position: relative;
+    }
+
+    .logo {
+      /* background-color: #110f0e; */
+      margin-top: 0%;
+      margin-left: 3%;
+      margin-right: 0%;
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      position: absolute;
+      top: 50px;
+      left: 250px;
+    }
+
+    .nav-item {
+      margin-right: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+
+    .price-tag {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      background-color: #8b6b4c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .price-tag::after {
+      content: "☺";
+      margin-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    .content {
+      background-image: url('./img/cafe.png');
+      background-size: cover;
+      background-position:0%;
+      background-repeat: no-repeat;
+      background-size: 600px;
+      padding: 2rem;
+      /* /* border-radius: 1rem; */
+      margin-top: 80px;
+      padding-left: 150px;
+    }
+
+    .title {
+      font-size: 5rem;
+      color: #563a1a;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      display: flex;
+    }
+
+    .subtitle span {
+      color: #6b4c28;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      align-items: center;
+      font-size: 18=7px;
+      background-color: #856a4e;
+      color: #f5f0ee;
+    }
+
+    .btn-secondary {
+      background-color: #e8d8c0;
+      color: #6b4c28;
+    }
+
+    .coffee-image {
+      position: absolute;
+      right: 0;
+      bottom: 50px;
+      width: 80%;
+      max-width: 600px;
+    }
+    .image-wrapper {
+      /* background-color: blue; */
+      /* position: relative;
+      width: fit-content; */
+      margin-top: -25%;
+      margin-left: 35%;
+      background-image: url('./img/dame.png'); /* Your background image */
+      background-size: 325px;
+      background-repeat: no-repeat;
+      
+      
+      background-position:right;
+  
+    }
+
+    .coffee-beans {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none"><path d="M50 20C63.8071 20 75 31.1929 75 45C75 58.8071 63.8071 70 50 70C36.1929 70 25 58.8071 25 45C25 31.1929 36.1929 20 50 20Z" fill="%23f8d8b8" opacity="0.2"/></svg>');
+      background-repeat: repeat;
+      opacity: 0.3;
+    }
+
+    .woman-outline {
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      height: 80%;
+      width: 50%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="200" viewBox="0 0 100 200" fill="none"><path d="M30 30C40 10 60 20 70 40C80 60 70 80 60 100C50 120 60 140 70 160C60 170 50 180 40 170C30 160 40 140 30 120C20 100 10 80 20 60C30 40 20 50 30 30Z" stroke="%23cccccc" fill="none" stroke-width="1"/></svg>');
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.2;
+    }
+
+    @media (max-width: 1200px) {
+      .nav-menu {
+        left: 180px;
+      }
+
+      .coffee-image {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav-menu {
+        position: static;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        margin-top: 100px;
+        padding-left: 20px;
+      }
+
+      .title {
+        font-size: 4rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .split-container {
+        flex-direction: column;
+      }
+
+      .left-side, .right-side {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .coffee-image {
+        position: relative;
+        margin: 50px auto;
+        display: block;
+        width: 80%;
+      }
+
+      .woman-outline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .title {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .price-tag {
+        top: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="coffee-container">
+    <img></img>
+    <img src="./img/logo.png" alt="Logo" class="logo"/>
+    <nav class="nav-menu" style="justify-content: center;">
+      
+      <a href="#" class="nav-item">Willkommen</a>
+      <a href="#dienstleistungen" class="nav-item">Dienstleistungen</a>
+      <a href="#dienstleistungen" class="nav-item">Kontakt</a>
+    </nav>
+  
+    <div class="content">
+      <h1 class="title">KaffeeZeit</h1><h2 class="subtitle">beste Vorschlage für ein <span> Kafe</span></h2>
+            <div class="buttons">
+        <a href="#" class="btn btn-primary" style="height: 80px; width: 160px;">Siehe den Vorschlag</a>
+        <a href="#" class="btn btn-secondary" style="height: 80px; width: 160px;">Jetzt kaufen</a>
+        
+      </div>
+      <div class="image-wrapper">
+        <img src="./img/fn.png" alt="Foreground Image"/>
+      </div>
+      
+    
+
+    </div>
+  
+    <div class="visuals">
+      <div class="price-tag">Nur 5€</div>
+      <!-- <img src="./img/fn.png" style="margin-top: 10%; margin-left: 35%;"> -->
+    </div>
+  </div>
+  <section id="dienstleistungen" style="padding: 10rem; background-color: #f8f4e9; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <h2 style="font-size: 2rem; color: #6b4c28;">Unsere Dienstleistungen</h2>
+    <ul style="margin-top: 1rem; list-style: none; padding: 0;">
+      <li style="margin-bottom: 1rem;">
+        <button class="btn btn-primary"style="padding: 0.5rem 1.5rem; font-size: 1rem; border: none; background-color: #6b4c28; color: white; border-radius: 20px; cursor: pointer;">
+          ☕ Professionelle Baristas
+        </button>
+      </li>
+      <li style="margin-bottom: 1rem;">
+        <button class="btn btn-primary"style="padding: 0.5rem 1.5rem; font-size: 1rem; border: none; background-color: #6b4c28; color: white; border-radius: 20px; cursor: pointer;">
+          🎂 Süße Spezialitäten
+        </button>
+      </li>
+      <li style="margin-bottom: 1rem;">
+        <button class="btn btn-primary"style="padding: 0.5rem 1.5rem; font-size: 1rem; border: none; background-color: #6b4c28; color: white; border-radius: 20px; cursor: pointer;">
+          🎉 Veranstaltungsservice
+        </button>
+      </li>
+    </ul>
+  </section>
+  
+  
+  <section style="padding: 4rem; background-color: #f8f4e9; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <h2 style="font-size: 2rem; color: #6b4c28;">Kontaktieren Sie uns</h2>
+    <form style="max-width: 500px; margin-top: 2rem;">
+      <input type="text" placeholder="Ihr Name" style="width: 100%; padding: 10px; margin-bottom: 1rem;">
+      <input type="email" placeholder="Ihre E-Mail" style="width: 100%; padding: 10px; margin-bottom: 1rem;">
+      <textarea placeholder="Nachricht" rows="5" style="width: 100%; padding: 10px; margin-bottom: 1rem;"></textarea>
+      <button type="submit" class="btn btn-primary" style="background-color: rgb(82, 52, 12);" >Absenden</button>
+    </form>
+  </section>
+  <section>
+  <footer style="background-color: #6b4c28; color: white; padding: 2rem; text-align: center;">
+    <p>&copy; 2025 KaffeeZeit. Alle Rechte vorbehalten.</p>
+    <p>
+      <a href="#" style="color: #f8d8b8; text-decoration: none;">Impressum</a> | 
+      <a href="#" style="color: #f8d8b8; text-decoration: none;">Datenschutz</a>
+    </p>
+  </footer>
+  </section>
+  
+  
+  
+
+  <script>
+    // Attend que le contenu HTML soit complètement chargé
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // 🔹 Sélectionne tous les éléments du menu de navigation avec la classe "nav-item"
+      const navItems = document.querySelectorAll('.nav-item');
+      
+      // 🔹 Parcourt chaque élément du menu
+      navItems.forEach(item => {
+  
+        // 🟤 Quand la souris passe dessus
+        item.addEventListener('mouseover', function() {
+          // Change la couleur du texte en marron clair
+          this.style.color = '#8b6b4c';
+        });
+  
+        // 🟤 Quand la souris quitte l'élément
+        item.addEventListener('mouseout', function() {
+          // Remet la couleur du texte en noir
+          this.style.color = 'black';
+        });
+      });
+  
+  
+      // 🔹 Sélectionne tous les boutons avec la classe "btn"
+      const buttons = document.querySelectorAll('.btn');
+  
+      // 🔹 Parcourt chaque bouton
+      buttons.forEach(button => {
+  
+        // 🟤 Quand la souris passe sur le bouton
+        button.addEventListener('mouseover', function() {
+          // Applique un effet de zoom (agrandissement)
+          this.style.transform = 'scale(1.05)';
+  
+          // Ajoute une transition fluide pour l'effet de zoom
+          this.style.transition = 'transform 0.3s ease';
+        });
+  
+        // 🟤 Quand la souris quitte le bouton
+        button.addEventListener('mouseout', function() {
+          // Remet le bouton à sa taille normale
+          this.style.transform = 'scale(1)';
+        });
+      });
+  
+    });
+  </script>
+  
+</body>
+</html>

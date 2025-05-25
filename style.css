@@ -1,0 +1,235 @@
+/* Galaxy Rain Effect Site Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #140d1f;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 20px;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 25px;
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+@media (min-width: 480px) {
+  nav ul {
+    max-width: 400px;
+  }
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(1.5em, 4vw, 1.8em);
+  color: #e1b4ff;
+}
+
+.hero p {
+  max-width: 90%;
+  margin: 20px auto;
+  color: #ccc;
+  font-size: clamp(0.9em, 2.5vw, 1em);
+}
+
+@media (min-width: 768px) {
+  .hero p {
+    max-width: 600px;
+  }
+}
+
+.cta {
+  background-color: #b46bff;
+  border: none;
+  padding: 12px 24px;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: clamp(0.9em, 2.5vw, 1em);
+}
+
+.cta:hover {
+  background-color: #9b50f2;
+}
+
+.about {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.circles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+@media (min-width: 480px) {
+  .circles {
+    gap: 20px;
+  }
+}
+
+.circle {
+  width: clamp(150px, 40vw, 200px);
+  height: clamp(150px, 40vw, 200px);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d1aaff, #9f6bff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  color: #000;
+  font-weight: bold;
+  font-size: clamp(0.8em, 2.2vw, 1em);
+}
+
+@media (min-width: 768px) {
+  .circle {
+    padding: 20px;
+  }
+}
+
+.projects {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+@media (min-width: 480px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+.project {
+  background-color: #251d32;
+  padding: 20px;
+  border-radius: 15px;
+  color: #fff;
+}
+
+.approach {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #1f1530;
+  color: #ddd;
+}
+
+.contact {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 250px;
+  margin-top: 10px;
+  font-size: clamp(0.9em, 2.5vw, 1em);
+}
+
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: clamp(0.9em, 2.5vw, 1em);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: clamp(0.7em, 2vw, 0.8em);
+  color: #777;
+}
+
+/* Rain Animation */
+#rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fall 1s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Make content appear above rain */
+body > *:not(#rain) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 479px) {
+  .hero {
+    padding: 30px 15px;
+  }
+  
+  .about, .projects, .approach, .contact {
+    padding: 30px 15px;
+  }
+  
+  nav ul {
+    padding: 15px;
+    gap: 15px;
+    font-size: 0.9em;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
